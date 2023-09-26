@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using server.Models;
 
 namespace server.Controllers
 {
@@ -8,13 +9,17 @@ namespace server.Controllers
     public class CoursesController : ControllerBase
     {
 
-        [HttpGet]
-        public IEnumerable<string> Get()
+        //  [HttpGet]
+        //  public IEnumerable<string> Get()
+        ///  {
+
+        ///    return new List<string>() { "C#" , "SQL"};
+        //}
+        private readonly SchoolApiContext _context;
+
+        public CoursesController(SchoolApiContext context)
         {
-
-             return new List<string>() { "C#" , "SQL"};
+            _context = context;
         }
-
-
     }
 }
