@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using server.Models;
 
 namespace server.Controllers
@@ -21,5 +22,17 @@ namespace server.Controllers
         {
             _context = context;
         }
+
+        //ajout de la methode get
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Course>>> GetCourses()
+        {
+
+            return await _context.Courses.ToListAsync();
+        }
+
+
+
+
     }
 }
