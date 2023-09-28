@@ -48,5 +48,9 @@ namespace server.Controllers
 
 
 
+        //utilisation de la methode post Pour l'ajout et insertion dans la bd
+
     }
 }
+
+
