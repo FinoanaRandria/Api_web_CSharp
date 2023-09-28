@@ -23,7 +23,7 @@ namespace server.Controllers
             _context = context;
         }
 
-        //ajout de la methode get
+        //ajout de la methode get et recuperation de tout les donnees
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Course>>> GetCourses()
         {
@@ -31,6 +31,20 @@ namespace server.Controllers
             return await _context.Courses.ToListAsync();
         }
 
+        //ajout de la methode get   et recuperatino d'un donne specifique by id
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Course>> GetCourseById(int id)
+        {
+
+            var course = await _context.Courses.Where(c => c.Id.Equals(id)).FirstOrDefaultAsync();
+              
+            if ( course == null)
+            {
+                return NotFound();
+            }
+            return course;
+
+        }
 
 
 
