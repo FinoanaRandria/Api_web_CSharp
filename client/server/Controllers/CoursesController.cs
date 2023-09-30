@@ -50,6 +50,19 @@ namespace server.Controllers
 
         //utilisation de la methode post Pour l'ajout et insertion dans la bd
 
+
+
+       public async Task <ActionResult<Course>> CreateCourses(Course course)
+        {
+
+            _context.Courses.Add(course);
+            await _context.SaveChangesAsync();
+            return CreatedAtAction(nameof(GetCourseById), new {id = course.Id} , course);
+        }
+
+
+
+
     }
 }
 
