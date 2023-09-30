@@ -50,7 +50,7 @@ namespace server.Controllers
 
         //utilisation de la methode post Pour l'ajout et insertion dans la bd
 
-
+        [HttpPost]
 
        public async Task <ActionResult<Course>> CreateCourses(Course course)
         {
