@@ -75,6 +75,29 @@ namespace server.Controllers
             return NoContent();
         }
 
+        //utilisation de la methode put
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateCourse( int id,Course course) {
+
+            if (!id.Equals(course.Id)) {
+
+                return BadRequest(" Id is not same");            
+            }
+
+            var courseToUpdate = await _context.Courses.FindAsync(id);
+
+            if (courseToUpdate == null) {
+
+                return NotFound($"Course with id = {id} not found ");
+            }
+
+        {
+
+
+
+        }
+
     }
 }
 
