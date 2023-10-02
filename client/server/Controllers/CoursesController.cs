@@ -78,27 +78,36 @@ namespace server.Controllers
         //utilisation de la methode put
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateCourse( int id,Course course) {
+        public async Task<IActionResult> UpdateCourse(int id, Course course)
+        {
 
-            if (!id.Equals(course.Id)) {
+            if (!id.Equals(course.Id))
+            {
 
-                return BadRequest(" Id is not same");            
+                return BadRequest(" Id is not same");
             }
 
             var courseToUpdate = await _context.Courses.FindAsync(id);
 
-            if (courseToUpdate == null) {
+            if (courseToUpdate == null)
+            {
 
                 return NotFound($"Course with id = {id} not found ");
             }
+            //courseToUpdate.Name = course.Name;
+            map(course, courseToUpdate);
+            await _context.SaveChangesAsync();
 
-        {
-
-
-
+            return NoContent();
         }
 
+        private void map(Course course, Course courseToUpdate)
+        {
+            courseToUpdate.Name = course.Name;
+        }
     }
-}
+
+      
+    }
 
 
